@@ -44,6 +44,10 @@ class bootparamd (
 ) inherits bootparamd::params {
 
   concat { $config_file:
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 0,
+    mode    => 0644,
     notify  => Service[$service_name],
   }
   Concat[$config_file] -> Service[$service_name]
