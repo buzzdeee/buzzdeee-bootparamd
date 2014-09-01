@@ -4,9 +4,9 @@
   "author": "buzzdeee",
   "summary": "Puppet Module to manage bootparamd",
   "license": "Apache 2.0",
-  "source": "https://github.com/buzzdeee/puppet-bootparamd.git",
-  "project_page": "https://github.com/buzzdeee/puppet-bootparamd",
-  "issues_url": "https://github.com/buzzdeee/puppet-bootparamd/issues",
+  "source": "https://github.com/buzzdeee/buzzdeee-bootparamd.git",
+  "project_page": "https://github.com/buzzdeee/buzzdeee-bootparamd",
+  "issues_url": "https://github.com/buzzdeee/buzzdeee-bootparamd/issues",
   "dependencies": [
     {
       "name": "puppetlabs-concat",
