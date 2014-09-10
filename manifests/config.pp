@@ -1,6 +1,10 @@
 define bootparamd::config (
-  $nfsserver,
-  $nfspath,
+  $nfsrootserver,
+  $nfsrootpath,
+  $nfsswapserver = undef,
+  $nfsswappath   = undef,
+  $nfsdumpserver = undef,
+  $nfsdumppath   = undef,
   $hostname = $title,
 ) {
   include bootparamd::params

@@ -1,2 +1,4 @@
-<%= hostname -%>	root=<%=nfsserver -%>:<%= nfspath -%>
+<%= hostname -%>	root=<%=nfsrootserver -%>:<%= nfsrootpath -%> <%if @nfsswapserver -%> \
+	swap=<%=nfsswapserver -%>:<%= nfsswappath -%> <% end -%> <%if @nfsdumpserver -%> \
+	dump=<%=nfsdumpserver -%>:<%= nfsdumppath -%> <% end -%>
 

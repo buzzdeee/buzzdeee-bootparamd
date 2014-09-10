@@ -36,6 +36,7 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class bootparamd (
+  $enable_yplookup  = false,
   $config_file      = $bootparamd::config_file,
   $service_enable   = $bootparamd::service_enable,
   $service_ensure   = $bootparamd::service_ensure,
@@ -51,6 +52,15 @@ class bootparamd (
     notify  => Service[$service_name],
   }
   Concat[$config_file] -> Service[$service_name]
+
+  if $enable_yplookup {
+    concat::fragment { "bootparamd-config-yplookup":
+      order      => '99',
+      target     => $bootparamd::config_file,
+      content    => "+\n",
+    }
+  }
+
   class { 'bootparamd::service':
     service_enable => $service_enable,
     service_ensure => $service_ensure,
