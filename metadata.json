@@ -1,16 +1,30 @@
 {
   "name": "buzzdeee-bootparamd",
   "version": "0.1.0",
-  "author": "buzzdeee",
+  "author": "Sebastian Reitenbach",
   "summary": "Puppet Module to manage bootparamd",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/buzzdeee/buzzdeee-bootparamd.git",
   "project_page": "https://github.com/buzzdeee/buzzdeee-bootparamd",
   "issues_url": "https://github.com/buzzdeee/buzzdeee-bootparamd/issues",
   "dependencies": [
     {
-      "name": "puppetlabs-concat",
-      "version_range": ">= 1.1.0"
+      "name": "duritong-sysctl",
+      "version_range": ">= 0.0.6"
+    },
+    {
+      "name": "jbeard-portmap",
+      "version_range": ">= 0.1.9"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 4.5.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"OpenBSD",
+    "operatingsystemrelease": [ "5.6" ]
     }
   ]
 }

@@ -1,16 +1,15 @@
-define bootparamd::config (
-  $nfsrootserver,
-  $nfsrootpath,
-  $nfsswapserver = undef,
-  $nfsswappath   = undef,
-  $nfsdumpserver = undef,
-  $nfsdumppath   = undef,
-  $hostname = $title,
+# Private class, do not use directly.
+# Manages the configuration file.
+
+class bootparamd::config (
+  $config_file,
+  $enable_yplookup,
+  $bootparams,
 ) {
-  include bootparamd::params
-  concat::fragment { "bootparamd-config-${hostname}":
-    order      => '01',
-    target     => $bootparamd::config_file,
-    content    => template('bootparamd/bootparams.erb'),
+  file { $config_file:
+    owner   => 'root',
+    group   => '0',
+    mode    => '0644',
+    content => template('bootparamd/bootparams.erb'),
   }
 }

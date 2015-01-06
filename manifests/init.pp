@@ -36,29 +36,24 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class bootparamd (
-  $enable_yplookup  = false,
-  $config_file      = $bootparamd::config_file,
-  $service_enable   = $bootparamd::service_enable,
-  $service_ensure   = $bootparamd::service_ensure,
-  $service_flags    = $bootparamd::service_flags,
-  $service_name     = $bootparamd::service_name,
+  $enable_yplookup = $bootparamd::params::enable_yplookup,
+  $config_file     = $bootparamd::params::config_file,
+  $old_sgi_client  = $bootparamd::params::old_sgi_client,
+  $service_enable  = $bootparamd::params::service_enable,
+  $service_ensure  = $bootparamd::params::service_ensure,
+  $service_flags   = $bootparamd::params::service_flags,
+  $service_name    = $bootparamd::params::service_name,
+  $bootparams      = undef,
 ) inherits bootparamd::params {
 
-  concat { $config_file:
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 0,
-    mode    => 0644,
-    notify  => Service[$service_name],
+  class { 'bootparamd::sysctl':
+    old_sgi_client => $old_sgi_client,
   }
-  Concat[$config_file] -> Service[$service_name]
 
-  if $enable_yplookup {
-    concat::fragment { "bootparamd-config-yplookup":
-      order      => '99',
-      target     => $bootparamd::config_file,
-      content    => "+\n",
-    }
+  class { 'bootparamd::config':
+    enable_yplookup => $enable_yplookup,
+    config_file     => $config_file,
+    bootparams      => $bootparams,
   }
 
   class { 'bootparamd::service':
@@ -67,4 +62,8 @@ class bootparamd (
     service_flags  => $service_flags,
     service_name   => $service_name,
   }
+
+  Class['bootparamd::sysctl'] ->
+  Class['bootparamd::config'] ~>
+  Class['bootparamd::service']
 }
