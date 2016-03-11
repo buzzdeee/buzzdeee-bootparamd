@@ -1,3 +1,5 @@
+# DO NOT EDIT, THIS FILE IS MANAGED VIA PUPPET
+#
 <% if @bootparams.is_a? Hash -%><% @bootparams.each do |hostname, val| -%>
 <%= hostname %>	root=<%= val['nfsrootserver'] %>:<%= val['nfsrootpath'] %> <%if val['nfsswapserver'] -%> \
 	swap=<%= val['nfsswapserver'] -%>:<%= val['nfsswappath'] -%> <% end -%> <%if val['nfsdumpserver'] -%> \
