@@ -6,8 +6,9 @@ class bootparamd::sysctl (
   $old_sgi_client,
 ) {
   if $old_sgi_client {
-    sysctl::value { 'net.inet.ip.portlast':
-      value => '32767',
+    sysctl { 'net.inet.ip.portlast':
+      ensure => 'present',
+      value  => '32767',
     }
   }
 }
