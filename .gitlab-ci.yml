@@ -1,7 +1,7 @@
 stages:
   - test
-  - deploy
   - release
+  - deploy
 
 variables:
   RUBYSUFFIX: '23'
@@ -33,7 +33,7 @@ rake-test:
 
 forge_release:
   script:
-    - "rake$RUBYSUFFIX build"
+    - "puppet module build"
     - "rake$RUBYSUFFIX module:release"
   stage: release
   only:
@@ -45,4 +45,3 @@ deploy:
   stage: deploy
   only:
     - master
-
