@@ -63,7 +63,7 @@ class bootparamd (
     service_name   => $service_name,
   }
 
-  Class['bootparamd::sysctl'] ->
-  Class['bootparamd::config'] ~>
-  Class['bootparamd::service']
+  Class['bootparamd::sysctl']
+  -> Class['bootparamd::config']
+  ~> Class['bootparamd::service']
 }

@@ -20,7 +20,7 @@ class bootparamd::service (
     flags      => $service_flags,
   }
 
-  Service['portmap'] ->
-  Service[$service_name]
+  Service['portmap']
+  -> Service[$service_name]
 
 }
