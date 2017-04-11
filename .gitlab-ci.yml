@@ -34,7 +34,7 @@ rake-test:
 forge_release:
   script:
     - "puppet module build"
-    - "rake$RUBYSUFFIX module:release"
+    - "rake$RUBYSUFFIX module:push"
   stage: release
   only:
     - tags
