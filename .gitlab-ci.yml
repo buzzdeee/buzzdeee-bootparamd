@@ -1,6 +1,7 @@
 stages:
   - test
   - deploy
+  - release
 
 variables:
   RUBYSUFFIX: '23'
@@ -28,6 +29,15 @@ rake-test:
   script:
     - "rake$RUBYSUFFIX spec SPEC_OPTS='--format documentation'"
   stage: test
+
+
+forge_release:
+  script:
+    - "rake$RUBYSUFFIX build"
+    - "rake$RUBYSUFFIX module:release"
+  stage: release
+  only:
+    - tags
 
 deploy:
   script:
