@@ -1,6 +1,6 @@
 {
   "name": "buzzdeee-bootparamd",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Sebastian Reitenbach",
   "summary": "Puppet Module to manage bootparamd",
   "license": "Apache-2.0",
