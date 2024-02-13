@@ -6,20 +6,30 @@
 #
 # Document parameters here.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*enable_yplookup*]
+#   Boolean: whether to enable yplookup, default: false
 #
-# === Variables
+# [*config_file*]
+#   String: the bootparams config file, default: /etc/bootparams
 #
-# Here you should define a list of variables that this module would require.
+# [*old_sgi_client*]
+#   Boolean: enables sysctl to lock down high ports for bootparamd
+#   to listen on. default: false
 #
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [*service_enable*]
+#   Boolean: whether to enable the service or not, default: true
+#
+# [*service_ensure*]
+#   Enum[running, stopped]: the desired state of bootparamd, default: running
+#
+# [*service_flags*]
+#   String: the service flags, default: '-s'
+#
+# [*service_name*]
+#   String: the name of the service, default: bootparamd
+#
+# [*bootparams*]
+#   Hash: the contents that goes into the config file, default: undef
 #
 # === Examples
 #
@@ -33,19 +43,18 @@
 #
 # === Copyright
 #
-# Copyright 2014 Your name here, unless otherwise noted.
+# Copyright 2014 Sebastian Reitenbach, unless otherwise noted.
 #
 class bootparamd (
-  $enable_yplookup = $bootparamd::params::enable_yplookup,
-  $config_file     = $bootparamd::params::config_file,
-  $old_sgi_client  = $bootparamd::params::old_sgi_client,
-  $service_enable  = $bootparamd::params::service_enable,
-  $service_ensure  = $bootparamd::params::service_ensure,
-  $service_flags   = $bootparamd::params::service_flags,
-  $service_name    = $bootparamd::params::service_name,
-  $bootparams      = undef,
-) inherits bootparamd::params {
-
+  Boolean $enable_yplookup,
+  String $config_file,
+  Boolean $old_sgi_client,
+  Boolean $service_enable,
+  Enum[running, stopped, 'running', 'stopped'] $service_ensure,
+  String $service_flags,
+  String $service_name,
+  Optional[Hash] $bootparams,
+) {
   class { 'bootparamd::sysctl':
     old_sgi_client => $old_sgi_client,
   }
