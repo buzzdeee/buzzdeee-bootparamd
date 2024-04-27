@@ -1,6 +1,6 @@
 {
   "name": "buzzdeee-bootparamd",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "author": "Sebastian Reitenbach",
   "summary": "Puppet Module to manage bootparamd",
   "license": "Apache-2.0",
@@ -21,8 +21,8 @@
     {
       "operatingsystem": "OpenBSD",
       "operatingsystemrelease": [
-        "5.6",
-        "7.4"
+        "7.4",
+	"7.5"
       ]
     }
   ],
