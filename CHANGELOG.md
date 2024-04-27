@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.2
+
+ * bump Puppet supported version in metadata.json
+
 ## Release 0.2.1
 
  * erb -> epp
