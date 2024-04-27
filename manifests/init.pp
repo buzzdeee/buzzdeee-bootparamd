@@ -55,22 +55,9 @@ class bootparamd (
   String $service_name,
   Optional[Hash] $bootparams,
 ) {
-  class { 'bootparamd::sysctl':
-    old_sgi_client => $old_sgi_client,
-  }
-
-  class { 'bootparamd::config':
-    enable_yplookup => $enable_yplookup,
-    config_file     => $config_file,
-    bootparams      => $bootparams,
-  }
-
-  class { 'bootparamd::service':
-    service_enable => $service_enable,
-    service_ensure => $service_ensure,
-    service_flags  => $service_flags,
-    service_name   => $service_name,
-  }
+  contain bootparamd::sysctl
+  contain bootparamd::config
+  contain bootparamd::service
 
   Class['bootparamd::sysctl']
   -> Class['bootparamd::config']
