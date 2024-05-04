@@ -53,7 +53,7 @@ class bootparamd (
   Enum[running, stopped, 'running', 'stopped'] $service_ensure,
   String $service_flags,
   String $service_name,
-  Hash $bootparams,
+  Optional[Hash] $bootparams,
 ) {
   contain bootparamd::sysctl
   contain bootparamd::config

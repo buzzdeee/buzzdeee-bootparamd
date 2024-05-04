@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.3
+
+ * fix template
+ * fix data/common.yaml
+ * more spec tests
+ * remove litmus from Gemfile
+
 ## Release 0.2.2
 
  * bump Puppet supported version in metadata.json

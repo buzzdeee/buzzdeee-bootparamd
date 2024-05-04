@@ -17,10 +17,10 @@ describe 'bootparamd' do
     it { is_expected.to contain_class('bootparamd::service') }
     it {
       is_expected.to contain_file('/etc/bootparams').with(
-          owner: 'root',
-          group: '0',
-          mode: '0644',
-      ).with_content(/^# DO NOT EDIT, THIS FILE IS MANAGED VIA PUPPET.*node1 root=192.168.1.23:\/export\/node1.*$/)
+        owner: 'root',
+        group: '0',
+        mode: '0644',
+      ).with_content(%r{^.*node1 root=192.168.1.23:/export/node1.*$})
     }
     it { is_expected.not_to contain_sysctl('net.inet.ip.portlast') }
     it {
