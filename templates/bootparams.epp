@@ -1,9 +1,9 @@
 # DO NOT EDIT, THIS FILE IS MANAGED VIA PUPPET
 #
 <% $::bootparamd::bootparams.each |$hostname, $val| { -%>
-<%= hostname %>	root=<%= val::nfsrootserver %>:<%= val::nfsrootpath %> \
-	<%if val::nfsswapserver { -%> swap=<%= val::nfsswapserver -%>:<%= val::nfsswappath -%> <% } -%> \
-	<%if val::nfsdumpserver { -%> dump=<%= val::nfsdumpserver -%>:<%= val::nfsdumppath -%> <% } %>
+<%= $hostname %> root=<%= $val[nfsrootserver] %>:<%= $val[nfsrootpath] %> \
+<%if $val[nfsswapserver] { -%> swap=<%= $val[nfsswapserver] -%>:<%= $val[nfsswappath] -%> <% } -%> \
+<%if $val[nfsdumpserver] { -%> dump=<%= $val[nfsdumpserver] -%>:<%= $val[nfsdumppath] -%> <% } %>
 <%- } -%>
 <% if $bootparamd::enable_yplookup { -%>
 +
