@@ -5,3 +5,4 @@ bootparamd::service_enable: true
 bootparamd::service_ensure: 'running'
 bootparamd::service_flags: '-s'
 bootparamd::service_name: 'bootparamd'
+bootparamd::bootparams: {}

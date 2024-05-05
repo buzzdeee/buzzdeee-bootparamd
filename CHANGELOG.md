@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.4
+
+ * properly make the bootparams hash optional
+ * more spec tests
+ * better template
+
 ## Release 0.2.3
 
  * fix template

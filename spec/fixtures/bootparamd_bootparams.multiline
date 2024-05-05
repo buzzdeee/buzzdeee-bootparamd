@@ -1,0 +1,11 @@
+# DO NOT EDIT, THIS FILE IS MANAGED VIA PUPPET
+#
+node1 root=192.168.0.1:/export/root_node1
+node2 root=192.168.0.2:/export/root_node2 \
+	swap=192.168.0.3:/export/swap_node2
+node3 root=192.168.0.4:/export/root_node3 \
+	swap=192.168.0.5:/export/swap_node3 \
+	dump=192.168.0.6:/export/dump_node3
+node4 root=192.168.0.7:/export/root_node4 \
+	dump=192.168.0.8:/export/dump_node4
++

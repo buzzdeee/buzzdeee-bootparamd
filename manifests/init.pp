@@ -29,7 +29,7 @@
 #   String: the name of the service, default: bootparamd
 #
 # [*bootparams*]
-#   Hash: the contents that goes into the config file, default: undef
+#   Optional Hash: the contents that goes into the config file, default: undef
 #
 # === Examples
 #
