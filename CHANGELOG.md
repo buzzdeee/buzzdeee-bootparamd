@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.5
+
+ * documentation update
+
 ## Release 0.2.4
 
  * properly make the bootparams hash optional

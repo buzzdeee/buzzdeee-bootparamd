@@ -33,9 +33,20 @@
 #
 # === Examples
 #
-#  class { bootparamd:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+# In the very simplest case, you just include the following:
+#
+# include bootparamd
+#
+# Configuration example for Hiera:
+#
+# bootparamd::bootparams:
+#   node1:
+#     nfsrootserver: "192.168.1.23"
+#     nfsrootpath: '/export/node1'
+#     nfsswapserver: "192.168.1.23"
+#     nfsswappath: '/export/swap1'
+#     nfsdumpserver: "192.168.1.23"
+#     nfsdumppath: '/export/dump1'
 #
 # === Authors
 #
